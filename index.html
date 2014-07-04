@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    <title>Welcome All</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+    
+    <script src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/smoothscroll.js"></script> 
+    <script src="assets/js/Chart.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+ #tooltip
+{
+    text-align: center;
+    color: #fff;
+    background: #111;
+    position: absolute;
+    z-index: 100;
+    padding: 15px;
+}
+ 
+    #tooltip:after /* triangle decoration */
+    {
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #111;
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -10px;
+        margin-left: -10px;
+    }
+ 
+        #tooltip.top:after
+        {
+            border-top-color: transparent;
+            border-bottom: 10px solid #111;
+            top: -20px;
+            bottom: auto;
+        }
+ 
+        #tooltip.left:after
+        {
+            left: 10px;
+            margin: 0;
+        }
+ 
+        #tooltip.right:after
+        {
+            right: 10px;
+            left: auto;
+            margin: 0;
+        }
+    </style>
+    <script type="text/javascript">
+    	$( function()
+{
+    var targets = $( '[rel~=tooltip]' ),
+        target  = false,
+        tooltip = false,
+        title   = false;
+ 
+    targets.bind( 'mouseenter', function()
+    {
+        target  = $( this );
+        tip     = target.attr( 'title' );
+        tooltip = $( '<div id="tooltip"></div>' );
+ 
+        if( !tip || tip == '' )
+            return false;
+ 
+        target.removeAttr( 'title' );
+        tooltip.css( 'opacity', 0 )
+               .html( tip )
+               .appendTo( 'body' );
+ 
+        var init_tooltip = function()
+        {
+            if( $( window ).width() < tooltip.outerWidth() * 1.5 )
+                tooltip.css( 'max-width', $( window ).width() / 2 );
+            else
+                tooltip.css( 'max-width', 340 );
+ 
+            var pos_left = target.offset().left + ( target.outerWidth() / 2 ) - ( tooltip.outerWidth() / 2 ),
+                pos_top  = target.offset().top - tooltip.outerHeight() - 20;
+ 
+            if( pos_left < 0 )
+            {
+                pos_left = target.offset().left + target.outerWidth() / 2 - 20;
+                tooltip.addClass( 'left' );
+            }
+            else
+                tooltip.removeClass( 'left' );
+ 
+            if( pos_left + tooltip.outerWidth() > $( window ).width() )
+            {
+                pos_left = target.offset().left - tooltip.outerWidth() + target.outerWidth() / 2 + 20;
+                tooltip.addClass( 'right' );
+            }
+            else
+                tooltip.removeClass( 'right' );
+ 
+            if( pos_top < 0 )
+            {
+                var pos_top  = target.offset().top + target.outerHeight();
+                tooltip.addClass( 'top' );
+            }
+            else
+                tooltip.removeClass( 'top' );
+ 
+            tooltip.css( { left: pos_left, top: pos_top } )
+                   .animate( { top: '+=10', opacity: 1 }, 50 );
+        };
+ 
+        init_tooltip();
+        $( window ).resize( init_tooltip );
+ 
+        var remove_tooltip = function()
+        {
+            tooltip.animate( { top: '-=10', opacity: 0 }, 50, function()
+            {
+                $( this ).remove();
+            });
+ 
+            target.attr( 'title', tip );
+        };
+ 
+        target.bind( 'mouseleave', remove_tooltip );
+        tooltip.bind( 'click', remove_tooltip );
+    });
+});
+    </script>
+  </head>
+
+  <body data-spy="scroll" data-offset="0" data-target="#nav">
+
+	<div id="section-topbar">
+		<div id="topbar-inner" style="background:#2d3339">
+			<div class="container">
+				<div class="row">
+					<div class="dropdown">
+						<ul id="nav" class="nav">
+							<li class="menu-item"><a class="smoothScroll" href="#about" title="About" rel="tooltip"><i class="icon-user"></i></a></li>
+							<li class="menu-item"><a class="smoothScroll" href="#resume" title="Resume" rel="tooltip"><i class="icon-file"></i></a></li>
+							<li class="menu-item"><a class="smoothScroll" href="#work" title="Works" rel="tooltip"><i class="icon-briefcase"></i></a></li>
+							<li class="menu-item"><a class="smoothScroll" href="#contact" title="Contact" rel="tooltip"><i class="icon-envelope"></i></a></li>
+						</ul><!--/ uL#nav -->
+					</div><!-- /.dropdown -->
+
+					<div class="clear"></div>
+				</div><!--/.row -->
+			</div><!--/.container -->
+
+			<div class="clear"></div>
+		</div><!--/ #topbar-inner -->
+	</div><!--/ #section-topbar -->
+	
+	<div id="headerwrap">
+		<div class="container">
+			<div class="row centered">
+				<div class="col-lg-12">
+					<h1>Rajat Pramod Ujawane</h1>
+					<h3>Software Developer | Web Developer</h3>
+				</div><!--/.col-lg-12 -->
+			</div><!--/.row -->
+		</div><!--/.container -->
+	</div><!--/.#headerwrap -->
+	
+
+	<section id="about" name="about"></section>
+	<div id="intro" style="background:#3ac162">
+		<div class="container">
+			<div class="row">
+				
+				<div class="col-lg-2 col-lg-offset-1">
+					<h5>ABOUT ME</h5>
+				</div>
+				<div class="col-lg-6">
+					<p>I'm Software developer, Web developer and Computer Science student of National Institute of Technology Warangal. I love technology, watching Discovery Science and cartoons, playing cricket, visiting new places and eating good food.</p>
+				</div>
+				<div class="col-lg-3">
+					<p ><a title="coming soon" href="#" rel="tooltip"><i class="icon-file"></i> <sm style="color:white">DOWNLOAD CV</sm></a></p>
+				</div>
+				
+			</div><!--/.row -->
+		</div><!--/.container -->
+	</div><!--/ #intro -->
+
+
+	<section id="resume" name="resume"></section>
+	<!--EDUCATION DESCRIPTION -->
+	<div class="container desc">
+		<div class="row">
+
+				<div class="col-lg-2 col-lg-offset-1">
+					<h5>EDUCATION</h5>
+				</div>
+				<div class="col-lg-6">
+					<p><t>Bachelor of Technology in Computer Science and Engineering</t><br/>
+						National Institute of Technology Warangal <br/>
+						<i>4 Years Course</i>
+					</p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>GRADUATING IN APRIL 2016</sm><br/>
+					<imp style="background:#2d3339"><sm>IN PROGRESS</sm></imp>
+					</p>
+				</div>
+	
+				<div class="col-lg-6 col-lg-offset-3">
+					<p><t>Higher Secondary Education</t><br/>
+						B.K.V Jr. College, Nagpur <br/>
+						<i>Grade 12</i><br/>
+						<i>Secured 71.5%</i>
+					</p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>2010-2011</sm></p>
+				</div>
+
+				<div class="col-lg-6 col-lg-offset-3">
+					<p><t>Secondary Education</t><br/>
+						Jaycees's Convent, Bhandara <br/>
+						<i>Grade 10</i><br/>
+						<i>Secured 82.15% with distinction</i>
+					</p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>2008-2009</sm></p>
+				</div>
+	
+		</div><!--/.row -->
+		<br>
+		<hr>
+	</div><!--/.container -->
+	
+	
+	<!--WORK DESCRIPTION -->
+	<div class="container desc">
+		<div class="row">
+
+				<div class="col-lg-2 col-lg-offset-1">
+					<h5>Scholastic</h5>
+				</div>
+				<div class="col-lg-6">
+					<p><t>Software Engineering Intern</t><br/>
+						Microsoft Academic Accelerator <br/>
+					</p>
+					<p><more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</more></p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>MAY 2014 - JULY 2014</sm></p>
+					<imp style="background:#2d3339"><sm>IN PROGRESS</sm></imp>
+				</div>
+	
+				<div class="col-lg-6 col-lg-offset-3">
+					<p><t>Devthon Hackathon</t><br/>
+						Lakshaya Foundation, NIT Warangal <br/>
+					</p>
+					<p><more>I have took part in Laskhaya Foundation Devthon and build a Vaccation Reminder Web Application</more></p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>JANUARY 2014</sm></p>
+					<imp style="background:#2d3339"><sm>RUNNER UP</sm></imp>
+				</div>
+
+				<div class="col-lg-6 col-lg-offset-3">
+					<p><t>Hackon 2014</t><br/>
+						Microsoft <br/>
+					</p>
+					<p><more>An online Hackathon by Microsoft in India's top 50 Enginnering colleges</more></p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>JANUARY 2014</sm></p>
+					<imp style="background:#2d3339"><sm>RUNNER UP</sm></imp>
+				</div>
+
+				<div class="col-lg-6 col-lg-offset-3">
+					<p><t>Angel Hack</t><br/>
+						Microsoft Research and Development Center, Hyderabad <br/>
+					</p>
+					<p><more>I was a part of India's Biggest hackathon ANGEL HACK and build a Windows Phone App which makes Google maps more dynamics by giving current status of shops, hospital etc</more></p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>NOVEMBER 2013</sm></p>
+					<imp style="background:#2d3339"><sm>SUCCESSFUL</sm></imp>
+				</div>
+
+				<div class="col-lg-6 col-lg-offset-3">
+					<p><t>Code fun do</t><br/>
+						Microsoft Academic Accelerator<br/>
+					</p>
+					<p><more>A Hackathon by Microsoft in India's top 10 colleges. I build a Windows 8 touch game which increases thinking capability of youngester and also a fun game</more></p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>OCTOBER 2013</sm></p>
+					<imp style="background:#2d3339"><sm>WINNER</sm></imp>
+				</div>
+
+				<div class="col-lg-6 col-lg-offset-3">
+					<p><t>Mozilla OS App day</t><br/>
+						Mozilla<br/>
+					</p>
+					<p><more>Build a Referee Assistant App and made first Open Source Contribution</more></p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>AUGUST 2013</sm></p>
+					<imp style="background:#2d3339"><sm>SUCCESSFUL</sm></imp>
+				</div>
+
+				<div class="col-lg-6 col-lg-offset-3">
+					<p><t>Code Fun Do</t><br/>
+						Microsoft Academic Accelerator <br/>
+					</p>
+					<p><more>My first Hackathon, introduced with Windows development and build a Windows phone 7 app using C# and XAML</more></p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>JANUARY 2013</sm></p>
+					<imp style="background:#2d3339"><sm>SUCCESSFUL</sm></imp>
+				</div>
+
+				<div class="col-lg-6 col-lg-offset-3">
+					<p><t>Maharashtra State Certification in Information Technology</t><br/>
+						NIIT<br/>
+					</p>
+					<p><more>It was Competition by NIIT in MICROSOFT OFFICE, WEB and INTERNET which includes teaching test and Online Exam</more></p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>GRADE 8</sm></p>
+					<imp style="background:#2d3339"><sm>WINNER</sm></imp>
+				</div>
+
+		</div><!--/.row -->
+		<br>
+		<hr>
+	</div><!--/.container -->
+
+
+	<!--AWARDS DESCRIPTION -->
+	<!--div class="container desc">
+		<div class="row">
+				<div class="col-lg-2 col-lg-offset-1">
+					<h5>AWARDS</h5>
+				</div>
+				<div class="col-lg-6">
+					<p><t>Best Web Design</t><br/>
+						Black Tie Site <br/>
+					</p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>NOVEMBER 2013</sm></p>
+				</div>
+	
+				<div class="col-lg-6 col-lg-offset-3">
+					<p><t>Designer of the Year</t><br/>
+						Awwwards Site
+					</p>
+					<p><more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</more></p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>2013</sm></p>
+				</div>
+		
+		</div></.row >
+		<br>
+	</div><!--/.container -->
+	
+	
+	<!--SKILLS DESCRIPTION -->
+	<div id="skillswrap" style="background:#3ac162">
+		<div class="container">
+			<div class="row">
+					<div class="col-lg-2 col-lg-offset-1">
+						<h5>SKILLS</h5>
+					</div>
+					<div class="col-lg-3 centered">
+						<canvas id="c++" height="130" width="130"></canvas>
+						<p><b>C++</b></p>
+						<br>
+						<script>
+							var doughnutData = [
+									{
+										value: 90,
+										color:"#f85c37"
+									},
+									{
+										value : 10,
+										color : "#ecf0f1"
+									}
+								];
+								var myDoughnut = new Chart(document.getElementById("c++").getContext("2d")).Doughnut(doughnutData);
+						</script>
+					</div>
+					<div class="col-lg-3 centered">
+						<canvas id="python" height="130" width="130"></canvas>
+						<p><b>Python</b></p>
+						<br>
+						<script>
+							var doughnutData = [
+									{
+										value: 70,
+										color:"#f85c37"
+									},
+									{
+										value : 30,
+										color : "#ecf0f1"
+									}
+								];
+								var myDoughnut = new Chart(document.getElementById("python").getContext("2d")).Doughnut(doughnutData);
+						</script>
+					</div>
+					<div class="col-lg-3 centered">
+						<canvas id="java" height="130" width="130"></canvas>
+						<p><b>Java</b></p>
+						<br>
+						<script>
+							var doughnutData = [
+									{
+										value: 85,
+										color:"#f85c37"
+									},
+									{
+										value : 15,
+										color : "#ecf0f1"
+									}
+								];
+								var myDoughnut = new Chart(document.getElementById("java").getContext("2d")).Doughnut(doughnutData);
+						</script>
+					</div>
+					<div class="col-lg-3 col-lg-offset-3 centered">
+						<canvas id="php" height="130" width="130"></canvas>
+						<p><b>PHP</b></p>
+						<br>
+						<script>
+							var doughnutData = [
+									{
+										value: 80,
+										color:"#f85c37"
+									},
+									{
+										value : 20,
+										color : "#ecf0f1"
+									}
+								];
+								var myDoughnut = new Chart(document.getElementById("php").getContext("2d")).Doughnut(doughnutData);
+						</script>
+					</div>
+					<div class="col-lg-3 centered">
+						<canvas id="html" height="130" width="130"></canvas>
+						<p><b>HTML/CSS</b></p>
+						<br>
+						<script>
+							var doughnutData = [
+									{
+										value: 88,
+										color:"#f85c37"
+									},
+									{
+										value : 12,
+										color : "#ecf0f1"
+									}
+								];
+								var myDoughnut = new Chart(document.getElementById("html").getContext("2d")).Doughnut(doughnutData);
+						</script>
+					</div>
+					<div class="col-lg-3 centered">
+						<canvas id="js" height="130" width="130"></canvas>
+						<p><b>Javascript</b></p>
+						<br>
+						<script>
+							var doughnutData = [
+									{
+										value: 75,
+										color:"#f85c37"
+									},
+									{
+										value : 25,
+										color : "#ecf0f1"
+									}
+								];
+								var myDoughnut = new Chart(document.getElementById("js").getContext("2d")).Doughnut(doughnutData);
+						</script>
+					</div>
+					
+					<div class="col-lg-3 col-lg-offset-3 centered">
+						<canvas id="autocad" height="130" width="130"></canvas>
+						<p><b>AutoCAD</b></p>
+						<br>
+						<script>
+							var doughnutData = [
+									{
+										value: 70,
+										color:"#f85c37"
+									},
+									{
+										value : 30,
+										color : "#ecf0f1"
+									}
+								];
+								var myDoughnut = new Chart(document.getElementById("autocad").getContext("2d")).Doughnut(doughnutData);
+						</script>
+					</div>
+					<div class="col-lg-3 centered">
+						<canvas id="photoshop" height="130" width="130"></canvas>
+						<p><b>CodeIgniter</b></p>
+						<br>
+						<script>
+							var doughnutData = [
+									{
+										value: 70,
+										color:"#f85c37"
+									},
+									{
+										value : 30,
+										color : "#ecf0f1"
+									}
+								];
+								var myDoughnut = new Chart(document.getElementById("photoshop").getContext("2d")).Doughnut(doughnutData);
+						</script>
+					</div>
+					<div class="col-lg-3 centered">
+						<canvas id="illustrator" height="130" width="130"></canvas>
+						<p><b>Bootstrap</b></p>
+						<br>
+						<script>
+							var doughnutData = [
+									{
+										value: 80,
+										color:"#f85c37"
+									},
+									{
+										value : 20,
+										color : "#ecf0f1"
+									}
+								];
+								var myDoughnut = new Chart(document.getElementById("illustrator").getContext("2d")).Doughnut(doughnutData);
+						</script>
+					</div>
+
+			</div><!--/.row -->
+			<br>
+		</div><!--/.container -->
+	</div><!--/ #skillswrap -->
+
+
+
+	<section id="work" name="work"></section>
+	<!--PORTFOLIO DESCRIPTION -->
+	<div class="container desc">
+		<div class="row">
+				<div class="col-lg-2 col-lg-offset-1">
+					<h5><b>Certification's</b></h5>
+				</div>
+				<div class="col-lg-6">
+					<p><img class="img-responsive" src="assets/img/harvard2.jpg" alt=""></p>
+				</div>
+				<div class="col-lg-3">
+					<p>Certification in Introduction to Computer Science, CS50</p>
+				<p><more>Ongoing</more><br/><br/>
+					<sm><i class="icon-tag"></i> Online</sm>
+				</p>
+				</div>
+	
+				<div class="col-lg-6 col-lg-offset-3">
+					<p><img class="img-responsive" src="assets/img/mit.jpg" alt=""></p>
+				</div>
+				<div class="col-lg-3">
+						<p>Introduction to Computer Science and Programming in Python, CS 6.00.1x</p>
+					<p><more>A Course offered by Massachusetts Institute of Technology, Cambridge on EDX</more><br/><br/>
+						<sm><i class="icon-tag"></i> Final Exam: 94%</sm>
+						<sm><i class="icon-tag"></i> Online</sm>
+					</p>
+				</div>
+				
+				<div class="col-lg-6 col-lg-offset-3">
+					<p><img class="img-responsive" src="assets/img/cybercure.png" alt=""></p>
+				</div>
+				<div class="col-lg-3">
+						<p>Ethical hacking and Cyber forensics –CSISS Certification of Information Security Specialist</p>
+					<p><more></more><br/><br/>
+						<sm><i class="icon-tag"></i>NIT Warangal</sm> 
+					</p>
+				</div>
+		
+		</div><!--/.row -->
+		<br>
+		<br>
+	</div><!--/.container -->
+	
+
+
+	<section id="contact" name="contact"></section>
+	<!--FOOTER DESCRIPTION -->
+	<div id="footwrap">
+		<div class="container">
+			<div class="row">
+			
+				<div class="col-lg-2 col-lg-offset-1">
+					<h5>CONTACT</h5>
+				</div>
+				<div class="col-lg-6">
+					<p><t>Email</t><br/>
+						rajatujawane@yahoo.com<br/>
+					</p>
+					<!--p><t>Adress</t><br/>
+						Some Ave. 987 <br/>
+						Postal 23892 <br/>
+						London, England. <br/>
+					</p-->
+					<p><t>Phone</t><br/>
+						+91 9421-965459 <br/>
+					</p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>SOCIAL LINKS</sm></p>
+					<p>
+						<a title="facebook" href="https://www.facebook.com/rajat.ujawane" rel="tooltip"><i class="icon-facebook"></i></a>
+						<a href="#" title ="coming soon" rel="tooltip"><i class="icon-linkedin"></i></a>
+						<a href="https://www.github.com/rajatu" title="github" rel="tooltip"><img src="assets/img/icons/icon_github.png" width:"25px" height="25px" /></a>
+						
+
+					</p>
+				</div>
+			</div><!--/.row -->
+		</div><!--/.container -->
+	</div><!--/ #footer -->
+	
+	<div id="c">
+		<div class="progress" style="width:40%;float:left;margin:5px;">
+  			<div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;background:#f85c37">75% Updated | Updating..</div>
+			</div>
+		<div class="container" style="">
+			<p>Copyright 2014 <a href="#">Desgined by Rajat Ujawane</a></p>
+		
+		</div>
+	</div>
+	
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/bootstrap.js"></script>
+  </body>
+</html>
