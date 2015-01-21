@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jarvis</title>
+
+	<!-- Script for Speech Recognition-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/1.4.0/annyang.min.js"></script>
+	
+	<!-- Voice to Text -->
+	 <script src="responsive.js"></script>
+   <script src="j101.js"></script>
+	<script src="http://code.jquery.com/jquery-git2.js"></script>
+	
+	<script type="text/javascript">
+
+
+//----------------------------WINDOWS ON LOAD FUNCTION NEEDED TO INITIALIZE ANNYANG -----------------------------
+	window.onload = function(){
+		//ananyg
+		if (annyang) {
+ 		 	// Let's define our first command. First the text we expect, and then the function it should call
+		  	var commands = {
+    			'Good Morning (Jarvis)': wish_morning,
+
+          'Good Afternoon (Jarvis)' : wish_afternoon,
+
+          'Good Evening (Jarvis)' : wish_evening,
+
+          '(Jarvis) (What is my ) Tomorrow time table (Jarvis)' : tomorrow_timetable
+  		  	};
+
+  			// Add our commands to annyang
+  			annyang.addCommands(commands);
+
+  			// Start listening. You can call this here, or attach this call to an event, button, etc.
+  			annyang.start();
+		}
+  }
+
+//---------------------------------------------------------------------------------------------------------------
+
+
+//-------------------------------POPULATING RESPONSIVE.JS -------------------------------------------------------		
+		//Populate voice selection dropdown
+        var voicelist = responsiveVoice.getVoices();
+ 
+        var vselect = $("#voiceselection");
+ 
+        $.each(voicelist, function() {
+                vselect.append($("<option />").val(this.name).text(this.name));
+        });
+     //}
+
+        
+//-----------------------------------------------------------------------------------------------------------------
+       
+ 
+
+        //on load
+        $(document).ready(function(){
+        	alert('yess');
+
+        
+
+        });
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
